@@ -8,8 +8,8 @@ contract Wallet {
      */
 
     /**
-    "External" function are part of the contract interface
-    They can therefore becalled via contracts and other transactions 
+        "External" function are part of the contract interface
+        They can therefore becalled via contracts and other transactions 
     */
 
     receive() external payable {}
@@ -17,3 +17,5 @@ contract Wallet {
     function addFunds() external payable {}
 
 }
+
+// const instance = await Wallet.deployed()
