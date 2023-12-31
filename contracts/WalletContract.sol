@@ -12,11 +12,9 @@ contract Wallet {
         They can therefore becalled via contracts and other transactions 
     */
 
-    receive() external payable {}
+    address[] public funders;
 
-    function testFunction() external pure returns(uint){
-        return 2 + 2;
-    }
+    receive() external payable {}
 
     /**
         Function modifiers
@@ -28,9 +26,16 @@ contract Wallet {
         - Transactions can generate state changes, require gas fee
      */
 
-    function addFunds() external payable {}
+    function addFunds() external payable {
+        funders.push(msg.sender);
+    }
 
 }
+
+/**
+
+    JSON-RPC http calls can be used to communicate with nodes on the network
+ */
 
 /**
     Block info
