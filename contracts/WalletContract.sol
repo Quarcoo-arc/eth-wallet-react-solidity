@@ -9,7 +9,11 @@ contract Wallet {
 
     /**
         "External" function are part of the contract interface
-        They can therefore becalled via contracts and other transactions 
+        They can therefore be called via contracts and other transactions 
+        External functions cannot be called by other functions within a contract, except using the 'this' keyword.
+        This also comes with increased gas prices
+
+        Use "Public" modifier for functions that need to be called by other functions in a contract
     */
 
     address[] public funders;
@@ -30,8 +34,13 @@ contract Wallet {
         funders.push(msg.sender);
     }
 
-    function getAllFunders() external view returns(address[] memory) {
+    function getAllFunders() public view returns(address[] memory) {
         return funders;
+    }
+
+    function getFunderAtIndex(uint8 index) external view returns(address) {
+        address[] memory _funders = getAllFunders();
+        return _funders[index];
     }
 
 }
@@ -49,3 +58,4 @@ contract Wallet {
  */
 
 // const instance = await Wallet.deployed()
+// instance.addFunds({from: accounts[0], value: "3"})
