@@ -14,8 +14,29 @@ contract Wallet {
 
     receive() external payable {}
 
+    function testFunction() external pure returns(uint){
+        return 2 + 2;
+    }
+
+    /**
+        Function modifiers
+        - view - function will not alter the storage state in any way
+        - pure - function will not even read the storage state
+        
+        NB 
+        - view and pure functions are read-only calls, no gas fee
+        - Transactions can generate state changes, require gas fee
+     */
+
     function addFunds() external payable {}
 
 }
+
+/**
+    Block info
+    Nonce - a hash which when combined with the minHash proofs
+    that the block has gone through proof of work (POW)
+    8 bytes => 64 bits
+ */
 
 // const instance = await Wallet.deployed()
